@@ -1,5 +1,10 @@
 function runKillstream() {
     console.log("Starting killstream, please wait")
+    var npc = document.getElementById("npc").value;
+    var solo = document.getElementById("solo").value;
+    var minIsk = document.getElementById("min-isk").value;
+    var maxIsk = document.getElementById("max-isk").value;
+    alert(minIsk)
     var sub = {"action":"sub","channel":"killstream"}
     websocket = new WebSocket("wss://zkillboard.com/websocket/")
 
@@ -11,7 +16,6 @@ function runKillstream() {
     websocket.onmessage = function (event) {
         console.log("Grabbing kill report");
         console.log(event.data);
-        console.log("Inserting kill report")
         addKillReport(event.data);
     }
 
@@ -21,7 +25,7 @@ function runKillstream() {
 
 function addKillReport(data){
     var report = document.createElement("p");
-    report.setAttribute("id", "killreport")
+    report.setAttribute("class", "killreport")
     report.innerText = data;
     document.getElementById("killstream").appendChild(report);
 }

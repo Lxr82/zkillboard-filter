@@ -7,18 +7,58 @@
     <meta content="utf-8" http-equiv="encoding">
     <style>
         .killreport{
-            margin-bottom:100px
+            margin-bottom: 100px;
+        }
+        .isk-range{
+            width: 100px;
+        }
+        label {
+            margin-inline-end: 10px;
+            display: inline;
+        }
+
+        input {
+            display: inline;
         }
     </style>
    </head>
    
    <body>
-      <div id = "sse">
-         <a href = "javascript:runKillstream()">Run WebSocket</a>
-      </div>
 
       <div id="killstream">
-          <h1>Killstream</h2>
+        <h1>Killstream</h2>
+        <form class="filter-form" action=>
+            <label>
+                NPC Kills
+                <input type="checkbox" id="npc">
+            </label>
+
+            <label>
+                Solo Kills
+                <input type="checkbox" id="solo">
+            </label>
+
+            <label>
+                System Security:
+                <select id="security">
+                    <option value="high-sec">High Sec</option>
+                    <option value="low-sec">High Sec</option>
+                    <option value="null-sec">High Sec</option>
+                    <option value="w-space">W-Space</option>
+                </select>
+            </label>
+
+            <label>
+                Isk Range:
+                <input type="text" id="min-isk" placeholder="Min Isk">
+                <input type="text" id="max-isk" placeholder="Max Isk">
+            </label>
+            
+            <div id="start-killstream">
+                <button onclick="javascript:runKillstream()">Filter</a>
+            </div>
+        </form>
+        
       </div>
       
    </body>
